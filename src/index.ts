@@ -1,5 +1,5 @@
-import { app, BrowserWindow } from "electron";
-import * as path from "path";
+import { app, BrowserWindow, ipcMain } from "electron";
+import {join as p} from "path";
 
 // Handle creating/removing shortcuts on Windows when installing/uninstalling.
 if (require("electron-squirrel-startup")) {
@@ -8,20 +8,28 @@ if (require("electron-squirrel-startup")) {
 }
 
 const createWindow = (): void => {
+  ipcMain.handle("mycall", (e,req) => {
+    console.log(req)
+    return "bar";
+  });
   // Create the browser window.
   const mainWindow = new BrowserWindow({
     height: 600,
     width: 800,
+    webPreferences:{
+      contextIsolation: true,
+      preload: p(__dirname,"./preload")
+    }
   });
   mainWindow.removeMenu();
   //mainWindow.menuBarVisible = false;
   // and load the index.html of the app.
   mainWindow.loadFile(
-    path.join(__dirname, "../node_modules/@hattmo/pdfgenfe/static/index.html")
+    p(__dirname, "../node_modules/@hattmo/pdfgenfe/static/index.html")
   );
 
   // // Open the DevTools.
-  // mainWindow.webContents.openDevTools();
+  mainWindow.webContents.openDevTools();
 };
 
 // This method will be called when Electron has finished

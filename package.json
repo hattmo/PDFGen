@@ -59,6 +59,7 @@
   },
   "dependencies": {
     "@hattmo/pdfgenfe": "^0.1.1",
+    "@types/node": "^14.14.14",
     "electron-squirrel-startup": "^1.0.0"
   }
 }
