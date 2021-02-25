@@ -1,10 +1,8 @@
 import { ipcRenderer, contextBridge } from "electron";
 
 contextBridge.exposeInMainWorld("api", {
-  testCall: () => {
-    console.log("electron");
-    ipcRenderer.invoke("mycall", "foo").then((res) => {
-      console.log(res);
-    });
-  },
+  parseCSV: (rawData: string): Promise<CSVData> =>
+    ipcRenderer.invoke("parseCSV", rawData),
+  getFields: (pdfPath: string): Promise<string> =>
+    ipcRenderer.invoke("getFields", pdfPath),
 });
