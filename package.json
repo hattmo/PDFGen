@@ -55,7 +55,7 @@
     "electron": "13.0.1",
     "eslint": "^7.27.0",
     "eslint-plugin-import": "^2.23.3",
-    "typescript": "^4.2.4"
+    "typescript": "^4.3.2"
   },
   "dependencies": {
     "@hattmo/pdfgenfe": "^0.1.1",
