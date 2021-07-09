@@ -59,7 +59,7 @@
   },
   "dependencies": {
     "@hattmo/pdfgenfe": "^0.1.1",
-    "@types/node": "^16.0.1",
+    "@types/node": "^16.0.3",
     "@types/node-pdftk": "^2.1.4",
     "@types/uuid": "^8.3.1",
     "csv-parser": "^3.0.0",
